@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Auto-Complete</title>
+<link rel="stylesheet" href="{% static '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static '/resources/demos/style.css' %}">
+  <script src="{% static 'https://code.jquery.com/jquery-1.12.4.js' %}"></script>
+  <script src="{% static 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %}"></script>
+  
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  
+  <link href="{% static 'css/scrolling-nav.css' %}" rel="stylesheet">
+<script>
+  $( function() {
+    $( "#search" ).autocomplete({
+      source: "/search/",
+      minLength: 1,
+    });
+  });
+  </script>
+</head>
+
+<body id="page-top">
+
+ 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Auto-Complete-Word</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Enter word</a>
+          </li>
+<li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Suggestions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>Welcome to Word Auto-complete web page</h1>
+      <p class="lead">Enter the letter! Let me show you suggest!!</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+<h2>Steps:</h2>
+<ol>
+            <li>Go to the text box</li>
+            <li>Enter 1 or 2 letter of the word you want</li>
+            <li>You will see the suggested words</li>
+            
+          </ol>
+<br>
+<br>
+<h2>Word Search</h2>
+<div class="ui-widget"
+          
+          <p class="lead">
+
+  
+  <form action= "/searchResults" method= "GET">
+      <input id="search" type="text" placeholder="enter word" name="term" size="25">
+      <input type="submit" value="Search">
+  </form></p>
+</div>
+</div>
+          
+        </div>
+      </div>
+    
+  </section>
+
+  <section id="services" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Suggestions</h2>
+{% for i in results %}
+<ul>
+          <li>{{i}}</li>
+</ul>
+{% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white"></p>
+    </div>
+   
+  </footer>
+
+  
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+ 
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  
+  <script src="{% static 'js/scrolling-nav.js' %}"></script>
+
+</body>
+
+</html>
